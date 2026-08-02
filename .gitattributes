@@ -1,0 +1,10 @@
+# Textdateien einheitlich mit LF im Repository speichern,
+# damit es zwischen Windows, Mac und dem Webserver keine Unterschiede gibt.
+* text=auto eol=lf
+
+# Binärdateien nicht anfassen
+*.webp binary
+*.png binary
+*.jpg binary
+*.woff2 binary
+*.mp4 binary

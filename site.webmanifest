@@ -1,0 +1,16 @@
+{
+  "name": "WiNKATO – Familienwappen aus Holz",
+  "short_name": "WiNKATO",
+  "description": "Familienwappen, Vereinswappen und Unikate aus massiver Eiche – handgefertigt im Eichsfeld.",
+  "lang": "de",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fbf8f3",
+  "theme_color": "#5f7355",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

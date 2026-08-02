@@ -1,0 +1,13 @@
+# Originalfotos in voller Auflösung – bleiben lokal, gehören nicht ins Repo.
+# Die optimierten Varianten liegen in assets/img/.
+_originale/
+
+# Betriebssystem / Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Node (nur falls du später Werkzeuge nutzt – die Seite selbst braucht kein Node)
+node_modules/
