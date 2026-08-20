@@ -349,6 +349,14 @@
     if (!form) return;
     const status = $("#kontaktstatus", form.parentElement) || $("#kontaktstatus");
 
+    // Vorbelegung über ?thema=... in der URL, z. B. von "Anfrage stellen"-Buttons auf den Themenseiten
+    const gewuenschtesThema = new URLSearchParams(location.search).get("thema");
+    if (gewuenschtesThema) {
+      const select = $("#thema", form);
+      const treffer = select && [...select.options].find((o) => o.value === gewuenschtesThema);
+      if (treffer) treffer.selected = true;
+    }
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const btn = $("button[type=submit]", form);
