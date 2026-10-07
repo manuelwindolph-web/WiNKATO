@@ -282,14 +282,14 @@
         <h2>So entsteht dein Wappen</h2>
       </div>
 
-      <div class="media" style="margin-bottom:clamp(2rem,1.5rem+2vw,3.5rem);cursor:zoom-in"
-           data-lightbox="assets/img/wappen-prozess-3d-1280.webp"
-           data-lightbox-alt="Entstehungsprozess eines Wappens: Entwurf, CAD-Zeichnung und gefrästes 3D-Relief">
-        <img src="assets/img/wappen-prozess-3d-1280.webp"
-             srcset="assets/img/wappen-prozess-3d-640.webp 640w, assets/img/wappen-prozess-3d-1280.webp 1280w"
-             sizes="(max-width: 1200px) 94vw, 1200px"
-             width="1280" height="593" loading="lazy" decoding="async"
-             alt="Entstehungsprozess eines Wappens: vom Entwurf über die CAD-Zeichnung zum gefrästen 3D-Relief in Eiche">
+      <div class="media" style="max-width:460px;margin:0 auto clamp(2rem,1.5rem+2vw,3.5rem)">
+        <!-- lädt erst beim Hinscrollen; bei reduzierter Bewegung bleibt das Standbild stehen -->
+        <video data-abspielen-sichtbar muted loop playsinline preload="none"
+               poster="assets/img/wappen-prozess-poster.webp"
+               width="720" height="900" style="width:100%;height:auto;display:block;background:var(--cream)"
+               aria-label="Animation: Ein Familienwappen entsteht – vom Entwurf über die CAD-Konstruktion zum gefrästen Relief in Eiche">
+          <source src="assets/video/wappen-prozess.mp4" type="video/mp4">
+        </video>
       </div>
 
       <ol class="steps">

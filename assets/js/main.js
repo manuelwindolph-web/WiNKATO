@@ -391,6 +391,23 @@
     });
   };
 
+  /* ------------------------------------------ Videos beim Hinscrollen */
+
+  /** Stumme Loops spielen nur, solange sie sichtbar sind – und gar nicht bei reduzierter Bewegung. */
+  const initSichtbarVideos = () => {
+    const videos = $$("video[data-abspielen-sichtbar]");
+    if (!videos.length || !("IntersectionObserver" in window)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const beobachter = new IntersectionObserver((eintraege) => {
+      eintraege.forEach(({ target, isIntersecting }) => {
+        if (isIntersecting) target.play().catch(() => {});
+        else target.pause();
+      });
+    }, { threshold: 0.35 });
+    videos.forEach((video) => beobachter.observe(video));
+  };
+
   /* ------------------------------------------------------------ Start */
 
   const init = () => {
@@ -400,6 +417,7 @@
     initBuyDialog();
     initPrices();
     initContactForm();
+    initSichtbarVideos();
     document.documentElement.dataset.js = "on";
   };
 
