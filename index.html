@@ -124,6 +124,13 @@
 <body>
 <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
+<div class="hinweisleiste" data-hinweis="weihnachten-2026">
+  <div class="container hinweisleiste__inner">
+    <p><strong>Weihnachten planen?</strong> <span class="hinweisleiste__lang">Die Fertigung dauert 2–3 Wochen – frag am besten jetzt an.</span><span class="hinweisleiste__kurz">2–3 Wochen Fertigung.</span></p>
+    <a href="kontakt.html">Anfrage stellen <span aria-hidden="true">→</span></a>
+  </div>
+</div>
+
 <header class="header">
   <div class="container header__inner">
     <a class="logo" href="/" aria-label="WiNKATO – Startseite">
@@ -142,6 +149,10 @@
       <a class="nav__link" href="eichsfeld-unikate.html">Eichsfeld-Unikate</a>
       <a class="nav__link" href="geschenke.html">Geschenke</a>
       <a class="nav__link" href="ueber-mich.html">Über mich</a>
+      <a class="nav__insta" href="https://www.instagram.com/winkato.de/" rel="noopener me" target="_blank" aria-label="WiNKATO auf Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
+        <span class="nav__insta-text">Instagram</span>
+      </a>
       <a class="btn btn--primary nav__cta" href="kontakt.html">Anfrage stellen</a>
     </nav>
   </div>
@@ -152,7 +163,18 @@
   <!-- ---------------------------------------------------------- Hero -->
   <section class="hero">
     <div class="container hero__grid">
-      <div>
+      <div class="hero__copy">
+        <p class="hero__anlass">
+          <span class="visually-hidden">Ein Stück aus Eiche für jeden Anlass</span>
+          <span aria-hidden="true">Ein Stück aus Eiche für</span>
+          <span class="anlass" aria-hidden="true" data-anlass>
+            <span class="anlass__wort is-aktiv">Weihnachten</span>
+            <span class="anlass__wort">eure Hochzeit</span>
+            <span class="anlass__wort">das Vereinsjubiläum</span>
+            <span class="anlass__wort">den Geburtstag</span>
+            <span class="anlass__wort">deine Heimat</span>
+          </span>
+        </p>
         <h1 class="hero__title">Familienwappen aus Holz –<br><em>handgefertigt im Eichsfeld</em></h1>
         <p class="hero__text">
           Vom ersten Entwurf bis zum fertigen 3D-Relief in massiver Eiche.
@@ -180,12 +202,17 @@
         </ul>
       </div>
 
-      <div class="hero__media">
-        <img src="assets/img/wappen-3d-relief-preview-1280.webp"
-             srcset="assets/img/wappen-3d-relief-preview-640.webp 640w, assets/img/wappen-3d-relief-preview-1280.webp 792w"
-             sizes="(max-width: 860px) 92vw, 44vw"
-             width="792" height="990" fetchpriority="high" decoding="async"
-             alt="Familienwappen als 3D-Relief aus massiver Eiche, gefräst mit Helm, Helmzier und Löwe im Schild">
+      <div class="hero__media hero__media--clip">
+        <video class="hero__clip" data-abspielen-sichtbar muted loop playsinline preload="metadata"
+               poster="assets/img/wappen-fertig-poster.webp" width="720" height="900"
+               aria-label="Animation: Ein Familienwappen entsteht – vom Entwurf über die CAD-Zeichnung bis zum gefrästen Relief in Eiche">
+          <source src="assets/video/wappen-prozess.mp4" type="video/mp4">
+        </video>
+        <figure class="hero__stimme">
+          <span class="hero__sterne" aria-label="5 von 5 Sternen">★★★★★</span>
+          <blockquote>„Es war ein tolles Weihnachtsgeschenk!“</blockquote>
+          <figcaption>Sabine S. · Familienwappen</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -213,6 +240,37 @@
       </ul>
     </div>
   </div>
+
+
+  <!-- ---------------------------------------------------- Fotoband -->
+  <section class="fotoband" aria-label="Aus der Werkstatt – eine Auswahl echter Stücke">
+    <div class="fotoband__spur">
+      <ul class="fotoband__liste">
+        <li><a href="geschenke.html"><img src="assets/img/hirsch-wanddeko-1-640.webp" alt="Hirsch-Wanddeko mit Namen" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="vereinswappen.html"><img src="assets/img/verein-2a-640.webp" alt="Vereinswappen SV Gernrode" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="eichsfeld-unikate.html"><img src="assets/img/eichsfeld-lied-2-640.webp" alt="Eichsfeldlied auf Eiche" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="geschenke.html"><img src="assets/img/brettchen-namen-1-640.webp" alt="Frühstücksbrettchen mit Namen" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="vereinswappen.html"><img src="assets/img/gemeinde-2a-640.webp" alt="Gemeindewappen in Originalfarben" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="geschenke.html"><img src="assets/img/insta-pizzabrett-johanna-640.webp" alt="Pizzabrett „Pizza à la Johanna“" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="eichsfeld-unikate.html"><img src="assets/img/eichsfeldadler-2-640.webp" alt="Eichsfeldadler über Kartenrelief" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="familienwappen.html"><img src="assets/img/wappen-3d-relief-large-640.webp" alt="Familienwappen als 3D-Relief" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="scan-on-fire.html"><img src="assets/img/qr-karte-1-640.webp" alt="Scan-on-Fire-Karte im Kerzenlicht" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="eichsfeld-unikate.html"><img src="assets/img/deutschland-relief-1-640.webp" alt="Deutschland-Relief aus Eiche" width="240" height="300" loading="lazy" decoding="async"></a></li>
+      </ul>
+      <ul class="fotoband__liste" aria-hidden="true">
+        <li><a href="geschenke.html" tabindex="-1"><img src="assets/img/hirsch-wanddeko-1-640.webp" alt="" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="vereinswappen.html" tabindex="-1"><img src="assets/img/verein-2a-640.webp" alt="" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="eichsfeld-unikate.html" tabindex="-1"><img src="assets/img/eichsfeld-lied-2-640.webp" alt="" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="geschenke.html" tabindex="-1"><img src="assets/img/brettchen-namen-1-640.webp" alt="" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="vereinswappen.html" tabindex="-1"><img src="assets/img/gemeinde-2a-640.webp" alt="" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="geschenke.html" tabindex="-1"><img src="assets/img/insta-pizzabrett-johanna-640.webp" alt="" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="eichsfeld-unikate.html" tabindex="-1"><img src="assets/img/eichsfeldadler-2-640.webp" alt="" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="familienwappen.html" tabindex="-1"><img src="assets/img/wappen-3d-relief-large-640.webp" alt="" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="scan-on-fire.html" tabindex="-1"><img src="assets/img/qr-karte-1-640.webp" alt="" width="240" height="300" loading="lazy" decoding="async"></a></li>
+        <li><a href="eichsfeld-unikate.html" tabindex="-1"><img src="assets/img/deutschland-relief-1-640.webp" alt="" width="240" height="300" loading="lazy" decoding="async"></a></li>
+      </ul>
+    </div>
+  </section>
 
   <!-- ------------------------------------------------------- Bereiche -->
   <section class="section">

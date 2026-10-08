@@ -408,10 +408,75 @@
     videos.forEach((video) => beobachter.observe(video));
   };
 
+  const weniger_bewegung = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /** Header: Schatten nach dem ersten Scrollen + feine Lesefortschritts-Linie. */
+  const initHeader = () => {
+    const header = $(".header");
+    if (!header) return;
+    let geplant = false;
+    const aktualisieren = () => {
+      geplant = false;
+      const y = window.scrollY;
+      header.classList.toggle("header--gescrollt", y > 8);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      header.style.setProperty("--lesefortschritt", max > 0 ? Math.min(1, y / max).toFixed(4) : 0);
+    };
+    window.addEventListener("scroll", () => {
+      if (!geplant) { geplant = true; requestAnimationFrame(aktualisieren); }
+    }, { passive: true });
+    aktualisieren();
+  };
+
+  /** Startseite: der Anlass in der Kopfzeile wechselt ruhig durchs Jahr. */
+  const initAnlass = () => {
+    const box = $("[data-anlass]");
+    if (!box || weniger_bewegung()) return;
+    const woerter = $$(".anlass__wort", box);
+    if (woerter.length < 2) return;
+    let i = 0;
+    setInterval(() => {
+      if (document.hidden) return;
+      const alt = woerter[i];
+      i = (i + 1) % woerter.length;
+      alt.classList.remove("is-aktiv");
+      alt.classList.add("is-weg");
+      woerter[i].classList.remove("is-weg");
+      woerter[i].classList.add("is-aktiv");
+      setTimeout(() => alt.classList.remove("is-weg"), 600);
+    }, 2600);
+  };
+
+  /** Inhalte unterhalb des ersten Bildschirms blenden beim Scrollen sanft ein. */
+  const initEinblenden = () => {
+    if (!("IntersectionObserver" in window) || weniger_bewegung()) return;
+    const kandidaten = $$("main .section-head, main .card, main .quote, main .step, main .media, main .faq, main .cta-box")
+      .filter((el) => el.getBoundingClientRect().top > window.innerHeight * 0.95);
+    if (!kandidaten.length) return;
+    document.documentElement.classList.add("js-einblenden");
+    const beobachter = new IntersectionObserver((eintraege) => {
+      eintraege.forEach(({ target, isIntersecting }) => {
+        if (!isIntersecting) return;
+        target.classList.add("ist-sichtbar");
+        beobachter.unobserve(target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    kandidaten.forEach((el) => {
+      el.setAttribute("data-einblenden", "");
+      // Geschwister im selben Raster leicht versetzt
+      const geschwister = el.parentElement ? [...el.parentElement.children].indexOf(el) : 0;
+      el.style.transitionDelay = `${Math.min(geschwister, 4) * 70}ms`;
+      beobachter.observe(el);
+    });
+  };
+
   /* ------------------------------------------------------------ Start */
 
   const init = () => {
     initNav();
+    initHeader();
+    initAnlass();
+    initEinblenden();
     initGalleries();
     initLightbox();
     initBuyDialog();
