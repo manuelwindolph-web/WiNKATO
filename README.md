@@ -119,6 +119,12 @@ _originale/              Originalfotos, per .gitignore ausgeschlossen
 **Preis ändern** → `assets/js/shop-data.js`, Betrag in Cent (`6900` = 69,00 €).
 Anschließend denselben Preis in Stripe setzen.
 
+**Zwischenspeicher** → CSS und JavaScript (also auch die Preise) prüft der
+Browser bei jedem Besuch kurz auf Änderungen, sie gelten sofort. Bilder,
+Schriften und Videos bleiben ein Jahr gespeichert: Wer eine solche Datei unter
+gleichem Namen ersetzt, hängt im HTML ein neues `?v=Datum` an den Pfad
+(wie bei `wappen-prozess.mp4?v=20261008`).
+
 **Neues Produkt** → in `shop-data.js` ergänzen, dann eine Produktkarte in
 `eichsfeld-unikate.html` oder `geschenke.html` kopieren und anpassen.
 Der Button braucht nur `data-buy="produkt-id"`.
