@@ -181,7 +181,7 @@ Zusätzlich in `.htaccess` den www-Block auskommentieren und den Block darunter 
 4. **Rechtstexte prüfen lassen.** Die vorhandenen Texte wurden übernommen und nur neu gestaltet,
    inhaltlich nicht geprüft. Drei Punkte lohnen einen Blick:
    - im Impressum steht seit Längerem „Telefon folgt in Kürze"
-   - der Verweis auf die EU-Streitschlichtungsplattform dürfte überholt sein
+   - ~~Verweis auf die EU-Streitschlichtungsplattform~~ entfernt: die Plattform wurde am 20.07.2025 abgeschaltet
    - beim Kauf personalisierter Ware muss der Ausschluss des Widerrufsrechts vor der Bestellung
      deutlich werden – im Kaufdialog steht der Hinweis jetzt, sollte aber juristisch abgesegnet sein
 
