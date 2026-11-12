@@ -48,9 +48,7 @@ window.WINKATO_PRODUCTS = {
     kategorie: "WiNKATO Premium",
     personalisierbar: false,
     varianten: [
-      /* 419 € seit 13.11.2026. Stripe-Link für 419 € fehlt noch: Solange stripe leer ist,
-         führt der Dialog zur Anfrage. Neuen Payment Link anlegen und hier eintragen. */
-      { id: "eichsfeldadler", label: "Mit Gravur „Landkreis Eichsfeld“ im Sockel", preis: 41900, stripe: "" }
+      { id: "eichsfeldadler", label: "Mit Gravur „Landkreis Eichsfeld“ im Sockel", preis: 41900, stripe: "https://buy.stripe.com/dRmeVc93fgsG5jcea03Ru0t" }
     ]
   },
 

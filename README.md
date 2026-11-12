@@ -53,7 +53,7 @@ Die übrigen elf Links konnte ich nicht mehr automatisiert auslesen. Bitte einma
 | Eichsfeld-Karte Wandversion | 151,00 € | ☐ |
 | Eichsfeld-Karte mit Standfuß | 159,00 € | ☐ |
 | Eichsfeld-Karte mit Staffelei | 175,00 € | ☐ |
-| Eichsfeldadler (mit Gravur im Sockel) | 419,00 € | ☐ **neuer Payment Link nötig** |
+| Eichsfeldadler (mit Gravur im Sockel) | 419,00 € | ☐ |
 | **Brettchen** | **39,00 €** | ☐ ← hier stand früher auch 29,90 € |
 | Hirsch-Wanddeko | 109,00 € | ☐ |
 
