@@ -23,11 +23,11 @@ window.WINKATO_PRODUCTS = {
   },
 
   deutschland: {
-    name: "Deutschland-Relief 2.5D",
+    name: "Deutschland-Relief",
     kategorie: "WiNKATO Original",
     personalisierbar: false,
     varianten: [
-      { id: "deutschland-2-5d", label: "2.5D Premium", preis: 20700, stripe: "https://buy.stripe.com/3cIbJ093fa4ih1U1ne3Ru0o" },
+      { id: "deutschland-2-5d", label: "Premium", preis: 20700, stripe: "https://buy.stripe.com/3cIbJ093fa4ih1U1ne3Ru0o" },
       { id: "deutschland-rahmen", label: "Mit Rahmen & Pigmentierung", preis: 23900, stripe: "https://buy.stripe.com/7sY00i3IVfoC6ngea03Ru0i" }
     ]
   },

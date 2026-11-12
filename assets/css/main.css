@@ -1493,3 +1493,18 @@ a { color: var(--sage-dark); }
 }
 
 .lightbox__count[hidden] { display: none; }
+
+/* ------------------------------------------- Hinweis: was „Relief“ heißt */
+
+.relief-hinweis {
+  max-width: 46rem;
+  margin: clamp(2rem, 1.5rem + 2vw, 3rem) auto 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--radius-sm);
+}
+
+.relief-hinweis h3 { margin: 0 0 0.5rem; font-size: 1.15rem; }
+.relief-hinweis p { margin: 0; color: var(--ink-soft); }
