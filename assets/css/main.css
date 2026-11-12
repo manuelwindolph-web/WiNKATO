@@ -1082,6 +1082,14 @@ a { color: var(--sage-dark); }
 .media { border-radius: var(--radius); overflow: hidden; }
 .media img { width: 100%; }
 
+/* Animation „So entsteht dein Wappen“ über den Ablauf-Schritten */
+.prozess-video {
+  max-width: 460px;
+  margin: 0 auto clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 40px -24px rgba(60, 40, 20, 0.35);
+}
+
 .split {
   display: grid;
   grid-template-columns: 1fr 1fr;

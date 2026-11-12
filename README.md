@@ -119,6 +119,12 @@ _originale/              Originalfotos, per .gitignore ausgeschlossen
 **Preis ändern** → `assets/js/shop-data.js`, Betrag in Cent (`6900` = 69,00 €).
 Anschließend denselben Preis in Stripe setzen.
 
+**Zwischenspeicher** → CSS und JavaScript (also auch die Preise) prüft der
+Browser bei jedem Besuch kurz auf Änderungen, sie gelten sofort. Bilder,
+Schriften und Videos bleiben ein Jahr gespeichert: Wer eine solche Datei unter
+gleichem Namen ersetzt, hängt im HTML ein neues `?v=Datum` an den Pfad
+(wie bei `wappen-prozess.mp4?v=20261008`).
+
 **Neues Produkt** → in `shop-data.js` ergänzen, dann eine Produktkarte in
 `eichsfeld-unikate.html` oder `geschenke.html` kopieren und anpassen.
 Der Button braucht nur `data-buy="produkt-id"`.
@@ -181,7 +187,7 @@ Zusätzlich in `.htaccess` den www-Block auskommentieren und den Block darunter 
 4. **Rechtstexte prüfen lassen.** Die vorhandenen Texte wurden übernommen und nur neu gestaltet,
    inhaltlich nicht geprüft. Drei Punkte lohnen einen Blick:
    - im Impressum steht seit Längerem „Telefon folgt in Kürze"
-   - der Verweis auf die EU-Streitschlichtungsplattform dürfte überholt sein
+   - ~~Verweis auf die EU-Streitschlichtungsplattform~~ entfernt: die Plattform wurde am 20.07.2025 abgeschaltet
    - beim Kauf personalisierter Ware muss der Ausschluss des Widerrufsrechts vor der Bestellung
      deutlich werden – im Kaufdialog steht der Hinweis jetzt, sollte aber juristisch abgesegnet sein
 
