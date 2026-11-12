@@ -257,6 +257,8 @@
 
     const variants = product.varianten;
     const personal = product.personalisierbar;
+    // Ohne Stripe-Link (noch nicht angelegt) wird nicht bezahlt, sondern verbindlich angefragt
+    const bezahlbar = variants.every((v) => v.stripe);
 
     const personalFields = `
       <div class="field">
@@ -301,9 +303,9 @@
         </p>
 
         <p class="form__status" id="kaufstatus" data-state="error" hidden></p>
-        <button type="submit" class="btn btn--primary btn--block">Weiter zur sicheren Bezahlung</button>
+        <button type="submit" class="btn btn--primary btn--block">${bezahlbar ? "Weiter zur sicheren Bezahlung" : "Jetzt anfragen"}</button>
         <p class="legal-note" style="margin:.9rem 0 0;text-align:center">
-          Bezahlung über Stripe · Karte, PayPal, Klarna
+          ${bezahlbar ? "Bezahlung über Stripe · Karte, PayPal, Klarna" : "Ich melde mich mit allen Details und der Zahlungsmöglichkeit bei dir."}
         </p>
       </form>`);
 
@@ -326,7 +328,7 @@
       status.hidden = true;
 
       if (!personal) {
-        window.location.href = variant.stripe;
+        window.location.href = variant.stripe || "kontakt.html?thema=WiNKATO%20kaufen";
         return;
       }
 
