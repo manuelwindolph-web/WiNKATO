@@ -107,29 +107,99 @@
     if (!box) return;
     const img = $("img", box);
     let lastFocus = null;
+    let bilder = [];   // [{ src, fallback, alt }]
+    let nr = 0;
+
+    // Bild-Quellen der Galerie in Vollansicht (-640.webp -> -1280.webp)
+    const gross = (url) => url.replace(/-640\.webp(\?.*)?$/, "-1280.webp");
+
+    // Pfeile und Zähler einmalig ergänzen
+    const prev = document.createElement("button");
+    prev.type = "button"; prev.className = "lightbox__nav lightbox__nav--prev";
+    prev.setAttribute("aria-label", "Vorheriges Bild"); prev.innerHTML = "&#8249;";
+    const next = document.createElement("button");
+    next.type = "button"; next.className = "lightbox__nav lightbox__nav--next";
+    next.setAttribute("aria-label", "Nächstes Bild"); next.innerHTML = "&#8250;";
+    const zaehler = document.createElement("p");
+    zaehler.className = "lightbox__count"; zaehler.setAttribute("aria-live", "polite");
+    box.append(prev, next, zaehler);
+
+    const zeige = (i) => {
+      nr = (i + bilder.length) % bilder.length;
+      const b = bilder[nr];
+      img.onerror = () => { if (b.fallback && img.src !== b.fallback) img.src = b.fallback; };
+      img.src = b.src;
+      img.alt = b.alt;
+      const mehrere = bilder.length > 1;
+      prev.hidden = next.hidden = zaehler.hidden = !mehrere;
+      zaehler.textContent = `${nr + 1} / ${bilder.length}`;
+    };
+
+    const open = (liste, start, trigger) => {
+      bilder = liste;
+      lastFocus = trigger;
+      zeige(start);
+      box.hidden = false;
+      document.body.classList.add("no-scroll");
+      $(".lightbox__close", box).focus();
+    };
 
     const close = () => {
       box.hidden = true;
+      img.src = "";
       document.body.classList.remove("no-scroll");
-      lastFocus?.focus();
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
     };
 
+    // Wischen in der Vollansicht
+    let startX = null;
+    box.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+    box.addEventListener("pointerup", (e) => {
+      if (startX === null || bilder.length < 2) { startX = null; return; }
+      const dx = e.clientX - startX;
+      startX = null;
+      if (Math.abs(dx) > 50) { box.dataset.gewischt = "1"; zeige(nr + (dx < 0 ? 1 : -1)); }
+    });
+
+    // Galerie-Bilder: Wischen in der Karte darf keine Vollansicht auslösen
+    let galerieStart = null;
+    document.addEventListener("pointerdown", (e) => { galerieStart = e.clientX; }, true);
+
     document.addEventListener("click", (e) => {
-      const trigger = e.target.closest("[data-lightbox]");
-      if (trigger) {
-        lastFocus = trigger;
-        img.src = trigger.dataset.lightbox;
-        img.alt = trigger.dataset.lightboxAlt || "";
-        box.hidden = false;
-        document.body.classList.add("no-scroll");
-        $(".lightbox__close", box).focus();
+      if (!box.hidden) {
+        if (box.dataset.gewischt) { delete box.dataset.gewischt; return; }
+        const pfeil = e.target.closest(".lightbox__nav");
+        if (pfeil) { zeige(nr + (pfeil.classList.contains("lightbox__nav--next") ? 1 : -1)); return; }
+        if (e.target.closest("#lightbox")) close();
         return;
       }
-      if (!box.hidden && e.target.closest("#lightbox")) close();
+
+      const folie = e.target.closest(".gallery__slide");
+      if (folie) {
+        if (galerieStart !== null && Math.abs(e.clientX - galerieStart) > 12) return; // war ein Wisch
+        const galerie = folie.closest("[data-gallery]");
+        const slides = galerie ? $$(".gallery__slide", galerie) : [folie];
+        const liste = slides.map((sl) => {
+          const klein = sl.dataset.src || sl.currentSrc || sl.src;
+          return { src: gross(klein), fallback: klein, alt: sl.alt };
+        });
+        // Die Bilder liegen übereinander: gemeint ist immer das gerade sichtbare
+        const aktiv = slides.findIndex((sl) => sl.hasAttribute("data-active"));
+        open(liste, Math.max(0, aktiv >= 0 ? aktiv : slides.indexOf(folie)), folie);
+        return;
+      }
+
+      const trigger = e.target.closest("[data-lightbox]");
+      if (trigger) {
+        open([{ src: trigger.dataset.lightbox, fallback: "", alt: trigger.dataset.lightboxAlt || "" }], 0, trigger);
+      }
     });
 
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && !box.hidden) close();
+      if (box.hidden) return;
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowRight" && bilder.length > 1) zeige(nr + 1);
+      else if (e.key === "ArrowLeft" && bilder.length > 1) zeige(nr - 1);
     });
   };
 
